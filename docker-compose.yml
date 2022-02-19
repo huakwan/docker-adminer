@@ -1,0 +1,14 @@
+version: "3.5"
+
+services:
+  adminer:
+    build: .
+    container_name: adminer
+    ports:
+      - 9080:8080
+    networks:
+      - database
+
+networks:
+  database:
+    external: true
