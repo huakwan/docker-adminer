@@ -15,6 +15,9 @@ Adminer - lightweight container with Nginx 1.20 &amp; PHP 8.0 based on Alpine Li
 - Beautiful theme (default orage theme)
 - Display foreign key name (work good with mysql)
 - Database hide
+- Suggest table fields
+- Table filter
+- Tinymce
 
 ## Pre-requisite
 - Docker
@@ -23,6 +26,12 @@ Adminer - lightweight container with Nginx 1.20 &amp; PHP 8.0 based on Alpine Li
 ```
 git clone https://github.com/huakwan/docker-adminer.git
 cd docker-adminer
+docker-compose up -d
+```
+
+## Re-create
+```
+docker-compose build
 docker-compose up -d
 ```
 

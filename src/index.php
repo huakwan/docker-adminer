@@ -18,6 +18,9 @@ function adminer_object()
             'sys'
         ]),
         new AdminerDisplayForeignKeyName(),
+        new AdminerTinymce(),
+        new AdminerTablesFilter(),
+        new AdminerSuggestTableField(),
         new AdminerTheme(),
     ];
 
