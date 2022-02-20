@@ -30,11 +30,19 @@ docker network create database
 docker-compose up -d
 ```
 
-## Re-create
+## Re-create if the code changed
 ```
 docker-compose build
 docker-compose up -d
 ```
 
+## Set container join database network
+```
+docker network connect database [CONTAINER]
+```
+
 ## Run
 http://localhost:9080/index.php
+
+## Login
+<img width="285" alt="login_screen_shot" src="https://user-images.githubusercontent.com/10665780/154832094-8f91aa44-fb19-41bf-a787-e299f1642f74.png">
