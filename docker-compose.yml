@@ -4,6 +4,7 @@ services:
   adminer:
     build: .
     container_name: adminer
+    restart: always
     ports:
       - 9080:8080
     networks:
