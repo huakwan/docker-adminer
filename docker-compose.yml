@@ -1,10 +1,10 @@
-version: "3.5"
+version: "3.9"
 
 services:
   adminer:
     build: .
     container_name: adminer
-    restart: always
+    restart: on-failure
     ports:
       - 9080:8080
     networks:
@@ -12,4 +12,5 @@ services:
 
 networks:
   database:
-    external: true
+    name: database
+    driver: bridge

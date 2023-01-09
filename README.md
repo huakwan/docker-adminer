@@ -6,7 +6,7 @@ Adminer - lightweight container with Nginx 1.20 &amp; PHP 8.0 based on Alpine Li
 - version 4.8.1 english version [link](https://github.com/vrana/adminer/releases)
 
 ## Support
-- [x] MySQL
+- [x] MySQL / MariaDB
 - [x] PostgreSQL
 - [ ] MongoDB
 - [ ] Oracle
@@ -26,7 +26,6 @@ Adminer - lightweight container with Nginx 1.20 &amp; PHP 8.0 based on Alpine Li
 ```
 git clone https://github.com/huakwan/docker-adminer.git
 cd docker-adminer
-docker network create database
 docker-compose up -d
 ```
 
