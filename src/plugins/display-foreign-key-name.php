@@ -54,10 +54,24 @@ class AdminerDisplayForeignKeyName
                     $where[] = join(' ', $param);
                 }
 
+                $pkIsChar = in_array($field['type'], array('varchar', 'char'));
+                if ($pkIsChar) {
+                    $whereChar = array();
+                    foreach ($where as $w) {
+                        $whereChar[] = str_replace(" = ", " = '", $w)."'";
+                    }
+                    $where = $whereChar;
+                }
+
                 // Find the first char/varchar field to display
                 $fieldName = false;
+                $fi = 0;
                 foreach (fields($params['select']) as $field) {
                     if (true == in_array($field['type'], array('varchar', 'char')) && $field['length'] >= 25) {
+                        $fi++;
+                        if ($pkIsChar && $fi == 1) {
+                            continue;
+                        }
                         $fieldName = $field['field'];
                         break;
                     }
@@ -71,13 +85,13 @@ class AdminerDisplayForeignKeyName
                         if ($result->num_rows == 1) {
                             $row = $result->fetch_assoc();
                             $value = $row[$fieldName];
-                            $length = (isset($_GET['text_length'])) ? (int)$_GET['text_length'] / 2 : 50;
+                            $length = (isset($_GET['text_length'])) ? (int)$_GET['text_length'] / 2 : 30;
                             if (extension_loaded('mbstring')) {
                                 if (mb_strlen($value, 'utf-8') > $length) {
                                     $value = mb_substr($value, 0, $length, 'utf-8') . '...';
                                 }
                             }
-                            $return = sprintf('%s%s', $original, $value == null ? '' : '  => ' . $value);
+                            $return = sprintf('%s%s', $original, $value == null ? '' : '  >>  ' . $value);
                             self::_setCache(md5($query), $return);
                         } else {
                             $return = $original;
